@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="digita clock">
+    <meta name="keyword" content="clock, digital clock,time">
+    <link rel="shortcut icon" href="/digital clock/favicon.ico" type="image/x-icon">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            justify-content: center;
+            background: linear-gradient(red 50%, white);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgb(249, 109, 109);
+            text-shadow: 3px 3px 3px rgb(81, 38, 38);
+            font-size: 40px;
+        }
+
+        .clock {
+            display: flex;
+
+        }
+
+        .clock div {
+            margin: 5px;
+            position: relative;
+            box-shadow: 4px 4px 4px rgb(129, 79, 79);
+            border-radius: 10px;
+        }
+
+        .clock span {
+            width: 100px;
+            height: 80px;
+            background: #f83e3e;
+            opacity: 80%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .clock #text {
+            text-transform: uppercase;
+            height: 30px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            background-color: red;
+            opacity: 80%;
+        }
+
+        #ampm {
+            bottom: 0;
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            font-size: 20px;
+            box-shadow: 3px 3px 3px rgb(81, 38, 38);
+            border-radius: 20px;
+        }
+
+        .info {
+            width: 200px;
+            height: 100px;
+            position: absolute;
+            left: 10px;
+            top: 80%;
+        }
+
+        .info a img {
+            width: 60px;
+            position: absolute;
+            left: 50px;
+        }
+
+        .info p {
+            color: rgb(204, 60, 60);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Digital Clock</h1>
+    <div class="clock">
+        <div>
+            <span id="hours">00</span>
+            <span id="text">hours</span>
+        </div>
+        <div>
+            <span id="minutes">00</span>
+            <span id="text">minutes</span>
+        </div>
+        <div>
+            <span id="seconds">00</span>
+            <span id="text">seconds</span>
+        </div>
+        <div>
+            <span id="ampm">AM</span>
+        </div>
+    </div>
+    <div class="info">
+        <p>Contact me on instagram</p>
+        <a href="https://instagram.com/shivam___sharma_09?igshid=YmMyMTA2M2Y=" target="_blank"><img
+                src="https://images.unsplash.com/photo-1611262588024-d12430b98920?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aW5zdGFncmFtJTIwbG9nb3xlbnwwfHwwfHw%3D&w=1000&q=80"
+                alt="instagram logo"></a>
+    </div>
+
+    <script>
+        let h1 = document.getElementsByTagName("h1")[0]
+        let hourEl = document.getElementById("hours")
+        let minuteEl = document.getElementById("minutes")
+        let secondEl = document.getElementById("seconds")
+        let ampmEl = document.getElementById("ampm")
+        function updateclock() {
+            let h = new Date().getHours()
+            let m = new Date().getMinutes()
+            let s = new Date().getSeconds()
+            let ampm = "AM"
+            if (h > 12) {
+                h = h - 12
+                ampm = "PM"
+            }
+            h = h < 10 ? "0" + h : h
+            m = m < 10 ? "0" + m : m
+            s = s < 10 ? "0" + s : s
+            hourEl.innerText = h
+            minuteEl.innerText = m
+            secondEl.innerText = s
+            ampm.innerText = ampm
+            setTimeout(() => {
+                updateclock()
+            }, 1000)
+            let mth_1 = Math.floor(Math.random() * (9999 - 1000) + 1000)
+            document.body.style.background = `#ff${mth_1}`
+            let mth_2 = Math.floor(Math.random() * (9999 - 1000) + 1000)
+            // h1.style.color = `#ff${mth_2}`
+        }
+        updateclock()
+    </script>
+</body>
+
+</html>
